@@ -119,7 +119,7 @@ ci=[int(c[0]),int(c[1]),int(c[2])]
 f = open('tmp/'+sys.argv[1]+".txt", "r")
 b64=f.read()
 f.close()
-#os.remove('tmp/'+sys.argv[1]+".txt")
+os.remove('tmp/'+sys.argv[1]+".txt")
 my_stdout = open( 1, "w", buffering = 5120000 ) 
 sys.stdout = my_stdout                           # now stdout buffer size will be 5mb
 
