@@ -40,7 +40,7 @@ function convert(e){
                         $('#res,#arr').css('display','block');
                         $('#load').css('display','none');
                         if(data == 'error')
-                            alert('error');
+                            alert('error!!!');
                         else{
                             document.getElementById("res").src = data;
                             document.getElementById("download").href = data;
@@ -61,7 +61,6 @@ to = document.getElementById('modimg');
 
 function type(choice,obj){
     c = choice;
-    // <li></li>
     $('#menu label').html(obj.innerHTML);
     $('.sub').css('display','block');
     $('#kyc').css('display','none');
