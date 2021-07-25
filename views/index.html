@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="CvTools">
+    <meta property="og:description" content="modify your image easily with this tool">
+    <meta property="og:image" content="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fcamera-lens-gm467079637-26250644&psig=AOvVaw1FxmjvKh7IbhSBA18IAQ33&ust=1627120940015000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICSo4D4-PECFQAAAAAdAAAAABAD">
+    <meta property="og:url" content="">
+    <meta property="og:image:secure_url" itemprop="image" content="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fvector%2Fcamera-lens-gm467079637-26250644&psig=AOvVaw1FxmjvKh7IbhSBA18IAQ33&ust=1627120940015000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCICSo4D4-PECFQAAAAAdAAAAABAD">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Arizonia' rel='stylesheet'>
+
+    <link rel="shortcut icon" type="image/svg" href="./images/cv.svg">
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>CvTools - modify your image</title>
+</head>
+
+<body class="fade-in">
+    <div class="head">
+        <img src="images/sun.png" id="sun" class="theme" alt="">
+        <img src="images/moon.png" id="moon" class="theme" alt="">
+        <h2 class="ml-3" onclick="theme()" style="font-family: 'Arizonia';font-weight: 1000;">CvTools</h2>
+        <a href="https://github.com/ShashankKNaik?tab=repositories" class="fa fa-github ml-1"></a>
+        <a href="https://www.linkedin.com/in/shashank-krishna-naik-467485207/" class="fa fa-linkedin"></a>
+    </div>
+
+
+    <div class="body">
+        <div id="choice">
+            <span onclick="type(0,this)">dotted image</span>
+            <span onclick="type(1,this)">gray scale</span>
+            <span onclick="type(2,this)">blend color</span>
+            <span onclick="type(3,this)">change color</span>
+            <span onclick="type(10,this)">pencil sketch</span>
+            <span onclick="type(4,this)">reduce size</span>
+            <span onclick="type(5,this)">change dimention</span>
+            <span onclick="type(6,this)">negative</span>
+            <span onclick="type(9,this)">oil paint</span> 
+            <span onclick="type(7,this)">gray inversion</span> 
+            <span onclick="type(8,this)">frosted glass</span>
+            <span onclick="type(11,this)">quantize</span>
+        </div>
+        <div class="col-sm-6 home-info">
+            <h4>Modify your photo using this tool 🛠️. Make sure your image is less than 5mb.</h4>
+        </div>
+        <div id="up-menu">
+            <span class="corner">
+                <div class="div1">?</div>
+                <div class="div2"></div>
+            </span>
+            <div class="row p-3">
+                <div class="up-menu col-sm-3 col-12">
+                    <div>
+                        <label for="inp" id="uplpadding" class="uplode m-0">uplode image</label> 
+                        <input id="inp" name="inp" type='file' accept="image/jpeg, image/png, image/jpg" style="display: none;">
+                    </div>
+                    <div class="uplode menu" id="menu">
+                        <label class="m-0">menu</label> 
+                    </div>
+                </div>
+                <div class="after-up col-sm-9 col-12">
+                    <form action="" id="form" onsubmit="convert(event)">
+                        <input type="color" class="color" id="selected" name="selected"
+                        value="#282828">
+                        <!-- <label id="ls" for="selected">select</label> -->
+                        <span id="cs" style="padding: 4px 0;">--></span>
+                        <input type="color" id="color" class="color" name="color"
+                                value="#00FF00">
+                        <!-- <label id="cs" for="color">color</label> -->
+                    
+                        <span id="fsize">less than <input type="number" min="1" max="5000" id="size" value="100">kb </span> 
+                        
+                        <span id="fdim"><input type="number" min="1" max="1000" value="100" id="dimention">% of it's initial size</span>
+                        
+                        <input type="submit" id="submit" class="btn"  value="convert">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="window">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="img-window">
+                        <div class="innerimg" id="inrimg">
+                            <div class="row" id="scroller" style="display: flex;justify-content: center;">
+                                <img id="img" class="col-sm-4">
+                            
+                                <span id="arr" class="m-3" > <span style="display: flex;align-items: center;height: 100%;">-----></span></span>
+                                <span id="load">
+                                    <span style="display: flex;align-items: center;height: 100%;">
+                                        <span class="spinner-border text-success"></span>
+                                    </span>
+                                </span>
+                                <!-- <span id="load" class="spinner-border text-success"></span> -->
+                                <img id="res" class="col-sm-4" onload="load()">
+                            </div>
+                        </div>
+                        <a download="modified.jpg" id="download">
+                            <span class="uplode down">download</span>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div class="col-sm-4" id="info">
+                    <div class="instrc-window">
+                        <span id="kyc" style="font-family: 'Arizonia'; text-align: center;">
+                            <h3 style="font-weight: 1000">Know your CvTools 🧐</h3>
+                        </span>
+                        <div class="row" style="justify-content: center;">
+                            <div class="col-4 col-xl-3"><img id="oriimg" alt="" style="width: 100%;"></div>
+                            <div class="col-2">
+                                <span id="mid" style="display: flex;justify-content: center;align-items: center;height: 100%;">
+                                    
+                                </span>
+                            </div>
+                            <div class="col-4 col-xl-3"> <img id="modimg" alt="" style="width: 100%;"></div>
+                        </div>
+                        <div class="p-3">
+                            <ul id="list" style="font-family:cursive;">
+                                <li>Dark Theme available 🌙. Click on logo at top left corner.</li>
+                                <li>Select menu to choose different tools.</li>
+                                <li>After selecting, click the convert button to proceed.</li>
+                                <li>The modified image will display then you can download the image by clicking the download button.</li>
+                                <li>For code, you can visit the GitHub page. Click on the GitHub icon at the top right corner 😇.</li>
+                            </ul>
+                            <label for="submit" class="btn sub">convert</label>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script src="js/index.js"></script>
+
+</html>
