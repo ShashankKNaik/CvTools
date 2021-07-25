@@ -94,8 +94,7 @@ def frosted_glass(img):
     return img
 
 def oil_paint(img):
-    img = cv2.xphoto.oilPainting(img, 7, 1)
-    # dst_gray, dst_color = cv2.pencilSketch(img, sigma_s=60, sigma_r=0.07, shade_factor=0.05) 
+    img = cv2.edgePreservingFilter(src, flags=1, sigma_s=60, sigma_r=0.4)
     return img
 
 def pencil_sketch(image):
