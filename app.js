@@ -30,7 +30,7 @@ app.post('/image',(req,res)=>{
 
     store=base64.split(",");
 
-    var dataToSend;
+    var dataToSend = '';
     var name =  Math.random()+Date.now();
     fs.writeFile("./tmp/"+name+".txt", store[1], function(err) {
         if(err) {
@@ -46,7 +46,7 @@ app.post('/image',(req,res)=>{
     const python = spawn('python', [pyfile, name, choice, selected, color,size,dimention]);
     
     python.stdout.on('data', function (data) {
-        dataToSend = data.toString();
+        dataToSend = dataToSend + data.toString();
     });
     
     python.stderr.on('data',(err)=>{
@@ -55,7 +55,6 @@ app.post('/image',(req,res)=>{
     })
     
     python.on('close', (code) => {
-        console.log(dataToSend)
         if(error == false)
             res.send(store[0]+','+dataToSend)
         else
