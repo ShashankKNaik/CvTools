@@ -47,7 +47,6 @@ app.post('/image',(req,res)=>{
     
     python.stdout.on('data', function (data) {
         dataToSend = data.toString();
-        console.log(dataToSend)
     });
     
     python.stderr.on('data',(err)=>{
@@ -56,6 +55,7 @@ app.post('/image',(req,res)=>{
     })
     
     python.on('close', (code) => {
+        console.log(dataToSend)
         if(error == false)
             res.send(store[0]+','+dataToSend)
         else
