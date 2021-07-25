@@ -47,6 +47,7 @@ app.post('/image',(req,res)=>{
     
     python.stdout.on('data', function (data) {
         dataToSend = data.toString();
+        console.log(dataToSend)
     });
     
     python.stderr.on('data',(err)=>{
